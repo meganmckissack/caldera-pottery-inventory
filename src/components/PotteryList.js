@@ -7,19 +7,22 @@ const potteryData = [
     name: "Blue dream",
     type: "mug",
     description: "ceramic mug with blue glaze",
-    price: 20 
+    price: 20,
+    quantity: 20 
   }, 
   {
     name: "Dark descent",
     type: "plate",
     description: 'ceramic 10" plate with black glaze',
-    price: 30
+    price: 30,
+    quantity: 20 
   }, 
   {
     name: "Tangerine dream",
     type: "bowl",
     description: "cereamic bowl with orange glaze",
-    price: 25 
+    price: 25,
+    quantity: 20 
   }, 
 ]
 
@@ -31,7 +34,9 @@ function PotteryList() {
           name={pottery.name}
           type={pottery.type}
           description={pottery.description}
-          price={pottery.price}
+          price={parseInt(pottery.price)}
+          quantity={parseInt(pottery.quantity)}
+          key={index}
         />
       )}
     </React.Fragment>

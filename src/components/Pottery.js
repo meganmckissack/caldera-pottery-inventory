@@ -9,6 +9,7 @@ function Pottery(props) {
       <p>{props.type}</p>
       <p>{props.description}</p>
       <p>{props.price}</p>
+      <p>{props.quantity}</p>
     </React.Fragment>
   )
 }
