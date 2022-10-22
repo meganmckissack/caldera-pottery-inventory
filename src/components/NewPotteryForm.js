@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { v4 } from "uuid";
-import ResuableForm from "./ReusableForm";
+import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
+import ReusableForm from "./ReusableForm";
 
 function NewPotteryForm(props) {
 
@@ -21,7 +21,7 @@ function NewPotteryForm(props) {
   return (
     <React.Fragment>
       <h3>Add Pottery to Inventory</h3>
-      <ResuableForm 
+      <ReusableForm 
       formSubmissionHandler={handleNewPotteryFormSubmission}
       buttonText="Submit New Pottery" />
     </React.Fragment>

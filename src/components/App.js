@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import PotteryControl from './PotteryControll';
-import PotteryList from './PotteryList';
+import PotteryControl from './PotteryControl';
 
 function App() {
   return (
