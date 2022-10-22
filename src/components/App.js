@@ -1,10 +1,12 @@
 import React from 'react';
-
+import Header from './Header';
+import PotteryList from './PotteryList';
 
 function App() {
   return (
    <React.Fragment>
-    <h1>Hello World</h1>
+    <Header />
+    <PotteryList />
    </React.Fragment>
   );
 }
