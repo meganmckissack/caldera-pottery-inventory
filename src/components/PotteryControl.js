@@ -65,14 +65,17 @@ class PotteryControl extends React.Component {
     });
   }
 
-  handlePotterySale = (pottery, id) => {
-    const potterySet = 4;
-    let potterySold = this.state.mainPotteryList.map(pottery => pottery.id === id && pottery.quantity >=1) ? 
-    {...pottery, quantity: pottery.quantity - potterySet} : pottery;
+  handlePotterySale = (id) => {
+    const selectedPottery = this.state.mainPotteryList.filter(pottery => pottery.id === id)[0];
+    if(selectedPottery.quantity >= 1) {
+      const potterySold = {...selectedPottery, quantity: selectedPottery.quantity - 1};
+      const newMainPotteryList = this.state.mainPotteryList.filter(pottery => pottery.id !==id).concat(potterySold);
     this.setState({
-      mainPotteryList: potterySold
+      mainPotteryList: newMainPotteryList
     });
   };
+}
+
 
 
   render() {
