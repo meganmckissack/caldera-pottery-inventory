@@ -11,7 +11,32 @@ class PotteryControl extends React.Component {
     super(props);
     this.state={
       formVisible: false,
-      mainPotteryList: [],
+      mainPotteryList: [
+        {
+          id: 1,
+          name: "Blue dream",
+          type: "mug",
+          description: "ceramic mug with blue glaze",
+          price: 20,
+          quantity: 20 
+        }, 
+        {
+          id: 2,
+          name: "Dark descent",
+          type: "plate",
+          description: 'ceramic 10" plate with black glaze',
+          price: 30,
+          quantity: 20 
+        }, 
+        {
+          id: 3,
+          name: "Tangerine dream",
+          type: "bowl",
+          description: "cereamic bowl with orange glaze",
+          price: 25,
+          quantity: 20 
+        }, 
+      ],
       selectedPottery: null,
       editing: false,
     };
@@ -105,7 +130,7 @@ class PotteryControl extends React.Component {
     return(
       <React.Fragment>
         {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded" onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }

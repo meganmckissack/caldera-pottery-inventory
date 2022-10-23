@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 function PotteryList(props) {
   return (
     <React.Fragment>
+      <div className="py-5">
       {props.potteryList.map((pottery) => 
         <Pottery
           whenSaleClicked={props.onClickingSale}
@@ -18,7 +19,9 @@ function PotteryList(props) {
           id={pottery.id}
           key={pottery.id}
         />
+      
       )}
+      </div>
     </React.Fragment>
   )
 }

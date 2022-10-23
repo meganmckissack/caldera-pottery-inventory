@@ -9,22 +9,28 @@ function ReusableForm(props) {
             type='text'
             name='name'
             placeholder='Name' />
+            <br />
         <input
             type='text'
             name='type'
             placeholder='Type' />
+            <br />
         <textarea
             name='description'
             placeholder='Description' />
+            <br />
         <input
             type='number'
             name='price'
             placeholder='Price' />
+            <br />
         <input
             type='number'
             name='quantity'
             placeholder='Quantity' />
-        <button type='submit'>Submit New Pottery</button>
+            <br />
+        <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded" type='submit'>Submit New Pottery</button>
+        <br />
       </form>
     </React.Fragment>
   )
