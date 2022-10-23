@@ -23,7 +23,7 @@ pottery business.  It has create, read, update, and delete capabilities.
 
 ## Known Bugs
 
-_none_
+_css not finished_
 
 ## License
 
