@@ -2,7 +2,7 @@ import React from "react";
 import Proptypes from 'prop-types';
 
 function PotteryDetail(props) {
-  const { pottery } = props;
+  const { pottery, onClickingDelete, onClickingEdit } = props;
 
   return ( 
     <React.Fragment>
@@ -12,6 +12,9 @@ function PotteryDetail(props) {
       <p>{pottery.description}</p>
       <p>{pottery.price}</p>
       <p>{pottery.quantity}</p>
+      <button onClick={ onClickingEdit }>Update Pottery</button>
+      <button onClick={() => onClickingDelete(pottery.id) }>Delete Pottery</button>
+      <hr />
     </React.Fragment>
   )
 }

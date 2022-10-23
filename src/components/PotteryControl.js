@@ -2,6 +2,8 @@ import React from "react";
 import NewPotteryForm from "./NewPotteryForm";
 import PotteryList from "./PotteryList";
 import PotteryDetail from "./PotteryDetail";
+import EditPotteryForm from "./EditPotteryForm";
+
 
 class PotteryControl extends React.Component {
 
@@ -11,14 +13,16 @@ class PotteryControl extends React.Component {
       formVisible: false,
       mainPotteryList: [],
       selectedPottery: null,
-    }
+      editing: false,
+    };
   }
 
   handleClick = () => {
-    if (this.state.selectedPottery != null) {
+    if(this.state.selectedPottery !== null) {
       this.setState({
         formVisible: false,
-        selectedPottery: null,
+        selectedPottery: null, 
+        editing: false, 
       });
     } else {
       this.setState(prevState => ({
@@ -33,9 +37,32 @@ class PotteryControl extends React.Component {
     this.setState({formVisible: false});
   }
 
-  handleChanginSelectedPottery = (id) => {
+  handleChangingSelectedPottery = (id) => {
     const selectedPottery = this.state.mainPotteryList.filter(pottery => pottery.id === id)[0];
     this.setState({selectedPottery: selectedPottery});
+  }
+
+  handleDeletingPottery = (id) => {
+    const newMainPotteryList = this.state.mainPotteryList.filter(pottery => pottery.id !== id);
+    this.setState({
+      mainPotteryList: newMainPotteryList,
+      selectedPottery: null
+    })
+  }
+
+  handleEditClick = () => {
+    this.setState({editing: true});
+  }
+
+  handleEditingPotteryInList = (potteryToEdit) => {
+    const editedmainPotteryList = this.state.mainPotteryList
+      .filter(pottery => pottery.id !== this.state.selectedPottery.id)
+      .concat(potteryToEdit);
+    this.setState({
+      mainPotteryList: editedmainPotteryList,
+      editing: false,
+      selectedPottery: null
+    });
   }
 
 
@@ -43,24 +70,30 @@ class PotteryControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
 
-    if(this.state.selectedPottery !== null) {
-      currentlyVisibleState= <PotteryDetail
-      pottery = {this.state.selectedPottery} />
+    if(this.state.editing) {
+      currentlyVisibleState = <EditPotteryForm pottery = {this.state.selectedPottery} />
       buttonText="Return to Pottery List";
-    } else if(this.state.formVisible) {
-      currentlyVisibleState = <NewPotteryForm onNewPotteryCreation={this.handleAddingNewPotteryToList} />
-      buttonText= "Return to Pottery List";
+    } else if (this.state.selectedPottery != null) {
+      currentlyVisibleState = <PotteryDetail 
+      pottery = {this.state.selectedPottery} 
+      onClickingDelete = {this.handleDeletingPottery} 
+      onClickingEdit = {this.handleEditClick} />
+      buttonText="Return to Pottery List";
+    } else if (this.state.formVisible) {
+        currentlyVisibleState = <NewPotteryForm onNewPotteryCreation={this.handleAddingNewPotteryToList} />;
+        buttonText = "Return to Pottery List";
     } else {
-      currentlyVisibleState = <PotteryList potteryList={this.state.mainPotteryList} />
-      buttonText= "Add Pottery";
-
-    return (
+      currentlyVisibleState = <PotteryList onPotterySelection={this.handleChangingSelectedPottery} potteryList={this.state.mainPotteryList} />;
+        buttonText = "Add Pottery";
+    }
+  
+    
+    return(
       <React.Fragment>
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
-    }
   }
 }
 
