@@ -7,10 +7,10 @@ function Pottery(props) {
       <div onClick = {() => props.whenPotteryClicked(props.id)}>
         {/* <img src={props.img} width="15%" height="15%" alt="ceramic cup" /> */}
         <h3>{props.name}</h3>
-        <p>{props.type}</p>
+        <p>Type: {props.type}</p>
         <p>{props.description}</p>
-        <p>{props.price}</p>
-        <p>{props.quantity}</p>
+        <p>${props.price}</p>
+        <p>In stock: {props.quantity}</p>
       </div>
       <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded" onClick={() => props.whenSaleClicked(props.id)}>Buy Now</button>
       <br />
