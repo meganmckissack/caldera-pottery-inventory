@@ -8,6 +8,7 @@ function PotteryList(props) {
     <React.Fragment>
       {props.potteryList.map((pottery) => 
         <Pottery
+          whenSaleClicked={props.onClickingSale}
           whenPotteryClicked={ props.onPotterySelection }
           name={pottery.name}
           type={pottery.type}
@@ -24,7 +25,8 @@ function PotteryList(props) {
 
 PotteryList.propTypes = {
   potteryList: PropTypes.array,
-  onPotterySelection: PropTypes.func
+  onPotterySelection: PropTypes.func,
+  onClickingSale: PropTypes.func
 }
 
 export default PotteryList;

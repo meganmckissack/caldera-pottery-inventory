@@ -65,6 +65,15 @@ class PotteryControl extends React.Component {
     });
   }
 
+  handlePotterySale = (pottery, id) => {
+    const potterySet = 4;
+    let potterySold = this.state.mainPotteryList.map(pottery => pottery.id === id && pottery.quantity >=1) ? 
+    {...pottery, quantity: pottery.quantity - potterySet} : pottery;
+    this.setState({
+      mainPotteryList: potterySold
+    });
+  };
+
 
   render() {
     let currentlyVisibleState = null;
@@ -83,7 +92,9 @@ class PotteryControl extends React.Component {
         currentlyVisibleState = <NewPotteryForm onNewPotteryCreation={this.handleAddingNewPotteryToList} />;
         buttonText = "Return to Pottery List";
     } else {
-      currentlyVisibleState = <PotteryList onPotterySelection={this.handleChangingSelectedPottery} potteryList={this.state.mainPotteryList} />;
+      currentlyVisibleState = <PotteryList onPotterySelection={this.handleChangingSelectedPottery} 
+                                           potteryList={this.state.mainPotteryList}
+                                           onClickingSale={this.handlePotterySale} />;
         buttonText = "Add Pottery";
     }
   

@@ -12,6 +12,7 @@ function Pottery(props) {
         <p>{props.price}</p>
         <p>{props.quantity}</p>
       </div>
+      <button onClick={() => props.whenSaleClicked(props.id)}>Buy Now</button>
     </React.Fragment>
   )
 }
