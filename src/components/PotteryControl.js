@@ -108,7 +108,7 @@ class PotteryControl extends React.Component {
     let buttonText = null;
 
     if(this.state.editing) {
-      currentlyVisibleState = <EditPotteryForm pottery = {this.state.selectedPottery} />
+      currentlyVisibleState = <EditPotteryForm pottery={this.state.selectedPottery} onEditPottery={this.handleEditingPotteryInList} />
       buttonText="Return to Pottery List";
     } else if (this.state.selectedPottery != null) {
       currentlyVisibleState = <PotteryDetail 
